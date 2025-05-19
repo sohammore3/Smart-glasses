@@ -1,0 +1,113 @@
+Smart Glasses for Visually Impaired People
+Overview
+This project develops smart glasses to assist visually impaired individuals by providing real-time environmental awareness through audio feedback. The system uses a camera attached to glasses (e.g., Raspberry Pi-based) and implements three core features:
+
+Object Detection: Identifies objects like chairs or doors using YOLOv5.
+Face Recognition: Recognizes known faces using the face_recognition library.
+Text Recognition: Reads text from signs or labels using Tesseract OCR.
+
+The system processes visual input and delivers audio output via text-to-speech, enabling users to navigate and interact with their surroundings.
+Features
+
+Object Detection: Real-time detection of common objects using YOLOv5.
+Face Recognition: Identifies pre-registered individuals from a known faces database.
+Text Recognition: Extracts and reads text from images using OCR.
+Audio Output: Converts results to audio using gTTS and pygame.
+
+Prerequisites
+
+Hardware:
+Raspberry Pi 4 with camera module or USB webcam.
+Audio output device (earphones or speakers).
+
+
+Software:
+Python 3.8+.
+Tesseract OCR (sudo apt install tesseract-ocr libtesseract-dev).
+Dependencies in requirements.txt.
+
+
+
+Installation
+
+Clone the repository:git clone https://github.com/your-username/smart-glasses-visually-impaired.git
+cd smart-glasses-visually-impaired
+
+
+Set up a virtual environment (optional):python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+
+Install dependencies:sudo apt update
+sudo apt install tesseract-ocr libtesseract-dev
+pip install -r requirements.txt
+
+
+Prepare known faces:
+Add images of known individuals to data/known_faces/ (e.g., john.jpg).
+
+
+Configure hardware:
+Connect the camera and audio output to the Raspberry Pi.
+Test the camera: raspistill -o test.jpg (for Pi Camera).
+
+
+
+Usage
+
+Run the main script:python src/main.py
+
+
+Operation:
+The camera captures video feed.
+The system detects objects, recognizes faces, and reads text.
+Audio feedback is provided through the connected device.
+
+
+Quit:
+Press q to exit the application.
+
+
+
+Project Structure
+smart-glasses-visually-impaired/
+├── src/
+│   ├── object_detection/   # YOLOv5-based object detection
+│   ├── face_recognition/  # Face recognition module
+│   ├── text_recognition/  # Tesseract-based text recognition
+│   ├── audio_output/      # Audio output module
+│   └── main.py            # Main integration script
+├── data/
+│   ├── known_faces/      # Known face images
+│   └── test_images/      # Sample test images
+├── docs/
+│   └── setup.md          # Detailed setup guide
+├── tests/                # Unit tests
+├── requirements.txt      # Dependencies
+├── README.md            # Project overview
+├── LICENSE              # MIT License
+└── .gitignore           # Git ignore file
+
+Testing
+Run tests using pytest:
+pip install pytest
+pytest tests/
+
+Note: Ensure test images are in data/test_images/ for test scripts to work.
+Contributing
+
+Fork the repository.
+Create a feature branch (git checkout -b feature/your-feature).
+Commit changes (git commit -m "Add your feature").
+Push to the branch (git push origin feature/your-feature).
+Open a Pull Request.
+
+License
+MIT License. See LICENSE for details.
+Contact
+For questions, contact your-email@example.com.
+Acknowledgments
+
+Libraries: OpenCV, YOLOv5, face_recognition, Tesseract, gTTS.
+Hardware: Raspberry Pi community.
+
